@@ -1,0 +1,22 @@
+{
+  "name": "bbc-penny-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kingstuffy/bbc-penny-converter.git"
+  },
+  "author": "Stuffy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kingstuffy/bbc-penny-converter/issues"
+  },
+  "homepage": "https://github.com/kingstuffy/bbc-penny-converter#readme"
+}
