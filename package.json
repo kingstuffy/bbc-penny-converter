@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/kingstuffy/bbc-penny-converter/issues"
   },
-  "homepage": "https://github.com/kingstuffy/bbc-penny-converter#readme"
+  "homepage": "https://github.com/kingstuffy/bbc-penny-converter#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-cssmin": "^2.2.0",
+    "grunt-contrib-uglify": "^3.0.1"
+  }
 }
