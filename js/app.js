@@ -1,4 +1,4 @@
-(function () {
+(function (exports) {
     /**
      *
      * @param pennies
@@ -73,5 +73,8 @@
         return {success: true, value: result};
     }
 
+    exports.getRequiredNumberOfCoins = getRequiredNumberOfCoins;
+    exports.getDenominationQuantity = getDenominationQuantity;
+    exports.convertToPennies = convertToPennies;
 
-}());
+})(this);
