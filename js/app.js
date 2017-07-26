@@ -1,6 +1,9 @@
 (function (exports) {
+
+
     /**
-     *
+     * Gets the minimum number of Sterling coins needed
+     * to make the amount in pennies
      * @param pennies
      * @returns {Array.<{quantity: number, remainingPennies: number}>}
      */
@@ -33,7 +36,6 @@
      */
     function getDenominationQuantity(pennies, denomination) {
         var pennyValue = convertToPennies(denomination).value;
-        console.log(denomination, pennyValue);
         var quantity = Math.floor(pennies / pennyValue);
         var remainingPennies = pennies % pennyValue;
         return {
