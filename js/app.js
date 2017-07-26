@@ -35,7 +35,10 @@
 
             var penniesResult = convertToPennies(input);
             if (!penniesResult.success) {
-                showErrorMessage(penniesResult.value, amountInput);
+                var errorMessage = penniesResult.value + '<br>'
+                    + 'You can use any of the following syntax: '
+                    + '92p, £2.12, 45.34, 345';
+                showErrorMessage(errorMessage, amountInput);
                 return;
             }
             if (penniesResult.value === 0) {
