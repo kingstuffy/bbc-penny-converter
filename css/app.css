@@ -36,6 +36,10 @@ summary {
     display: block;
 }
 
+body {
+    background-color: #ffffff;
+}
+
 .app__wrapper {
     padding-top: 15%;
     margin: 0 auto;
