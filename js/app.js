@@ -35,6 +35,10 @@
                 showErrorMessage(penniesResult.value, amountInput);
                 return;
             }
+            if (penniesResult.value === 0) {
+                showErrorMessage('Amount must be greater than zero', amountInput);
+                return;
+            }
 
             var requiredCoins = getRequiredNumberOfCoins(penniesResult.value);
             var resultsMessage = composeResultsMessage(requiredCoins);
