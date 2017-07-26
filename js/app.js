@@ -1,6 +1,78 @@
 (function (exports) {
 
 
+    $(function () {
+        var amountInput = $('#amount');
+        var convertBtn = $('#convert');
+        var resetBtn = $('#reset');
+        var formMessages = $('.form__messages');
+
+        amountInput.keypress(trimInput);
+        amountInput.focus(clearErrors);
+        convertBtn.click(convertInput);
+        resetBtn.click(resetData);
+        $(document).on('click', '.alert__dismiss', dismissAlert);
+
+        function trimInput(e) {
+            return e.which !== 32;
+        }
+
+        function clearErrors() {
+            $(this).siblings('.form__error-message').remove();
+            amountInput.removeClass('form__input--has-error');
+        }
+
+        function convertInput(e) {
+            e.preventDefault();
+            var input = amountInput.val();
+            if (typeof input === 'undefined' || input === '' || input === '0') {
+                showErrorMessage('Empty Input', amountInput);
+                return;
+            }
+
+            var penniesResult = convertToPennies(input);
+            if (!penniesResult.success) {
+                showErrorMessage(penniesResult.value, amountInput);
+                return;
+            }
+
+            var requiredCoins = getRequiredNumberOfCoins(penniesResult.value);
+            var resultsMessage = composeResultsMessage(requiredCoins);
+            var successMessage = 'The minimum number of Sterling coins needed to make '
+                + input + ' are <span class="text--results">' + resultsMessage + '</span>';
+            showSuccessMessage(successMessage);
+
+        }
+
+        function resetData(e) {
+            e.preventDefault();
+            amountInput.val('');
+            amountInput.focus();
+            formMessages.empty();
+        }
+
+        function dismissAlert() {
+            $(this).closest('.alert').fadeOut('slow', function () {
+                $(this).remove();
+            });
+        }
+
+        function showErrorMessage(message, input) {
+            var errorMessage = '<div class="form__error-message">Oops! ' + message + '</div>';
+            input.addClass('form__input--has-error');
+            input.siblings('.form__error-message').remove();
+            input.after(errorMessage)
+        }
+
+        function showSuccessMessage(message) {
+            var successMessage = '<div class="alert alert--success">'
+                + '<span class="alert__dismiss">x</span>'
+                + message + '</div>';
+            formMessages.hide().html(successMessage).fadeIn('slow');
+        }
+
+    });
+
     /**
      * Gets the minimum number of Sterling coins needed
      * to make the amount in pennies
@@ -80,8 +152,21 @@
         return {success: true, value: result};
     }
 
+    /**
+     * Compose results message
+     * @param requiredCoins
+     * @returns {string}
+     */
+    function composeResultsMessage(requiredCoins) {
+        var resultsDescription = requiredCoins.reduce(function (descriptions, coin) {
+            return descriptions.concat(coin.quantity + '(' + coin.denomination + ')');
+        }, []);
+        return resultsDescription.join(', ') || 'NA';
+    }
+
     exports.getRequiredNumberOfCoins = getRequiredNumberOfCoins;
     exports.getDenominationQuantity = getDenominationQuantity;
     exports.convertToPennies = convertToPennies;
+    exports.composeResultsMessage = composeResultsMessage;
 
 })(this);
