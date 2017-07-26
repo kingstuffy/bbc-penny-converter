@@ -24,6 +24,9 @@
 
         function convertInput(e) {
             e.preventDefault();
+            var formAlert = formMessages.find('.alert').get(0);
+            dismissAlert.apply(formAlert);
+
             var input = amountInput.val();
             if (typeof input === 'undefined' || input === '' || input === '0') {
                 showErrorMessage('Empty Input', amountInput);
@@ -57,6 +60,7 @@
         }
 
         function dismissAlert() {
+            console.log(this);
             $(this).closest('.alert').fadeOut('slow', function () {
                 $(this).remove();
             });
