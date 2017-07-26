@@ -4,8 +4,17 @@ describe("App", function () {
 
     describe("#convertToPennies", function () {
 
+        it("should return error for valid characters in the wrong positions", function () {
+            var invalidInputs = ['13£', '13p.02', '4.£33', '34p42', 'p4'];
+            invalidInputs.forEach(function (input) {
+                var result = convertToPennies(input);
+                expect(result.success).to.equal(false);
+                expect(result.value).to.equal('Valid character in the wrong position');
+            });
+        });
+
         it("should return error for invalid inputs", function () {
-            var invalidInputs = ['13x', '£45.3u', '56p23p', '45£', 'SFW'];
+            var invalidInputs = ['13x', '£45.3u', '56u23p', '45o', 'SFW'];
             invalidInputs.forEach(function (input) {
                 var result = convertToPennies(input);
                 expect(result.success).to.equal(false);

@@ -138,6 +138,7 @@
         var multiplier = 1;
         var acceptedLetters = /^[0-9.]+$/;
         var decimalCharacter = /[.]/;
+        var symbolCharacters = /[£,p]/;
 
         if (input.charAt(0) === '£') {
             multiplier = 100;
@@ -150,6 +151,10 @@
 
         if (input.length === 0) {
             return {success: false, value: 'Missing value'}
+        }
+
+        if (symbolCharacters.test(input)) {
+            return {success: false, value: 'Valid character in the wrong position'}
         }
 
         if (!acceptedLetters.test(input)) {
