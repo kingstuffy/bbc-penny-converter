@@ -2,8 +2,9 @@
 
 * [Summary](#summary)
 * [Requirements](#requirements)
-* [Starting App](#starting-app)
-* [Starting Tests](#starting-tests)
+* [Starting The App](#starting-the-app)
+* [Testing](#testing)
+* [Build Project](#build-project)
 
 ## Summary
 
@@ -16,16 +17,31 @@ Examples of valid inputs with their canonical equivalents: `432` (432), `213p` (
 
 Examples of invalid inputs: `13x` (invalid character), `13p.02` (valid character in the wrong position), `£p` (missing value).
 
+
 ## Requirements
 * Accounts for only the common `£2`, `£1`, `50p`, `20p`, `10p`, `5p`, `2p` and `1p` coins. Ignore those commemorative `£5` coins.
 * A modern browser with Javascript support.
 * User interface consists of an input field that accepts an 'amount' string (Eg. `92p`, `£2.12`) and displays the denominations needed when the user hits 'enter'.
 
 
-## Starting App
+## Starting The App
 * To run the app, open the file `index.html` in a modern web browser with javascript support
 * Demo: [Penny Converter](https://kingstuffy.github.io/bbc-penny-converter)
 
-## Starting Tests
+
+## Testing
+* Tests are written using the [Mocha.js](https://mochajs.org/) library.
 * To run the test for the app, open the file `index.test.html` in a modern web browser with javascript support
 * Demo: [Penny Converter Tests](https://kingstuffy.github.io/bbc-penny-converter/index.test.html)
+
+
+## Build Project
+* Make sure that [Node.js](https://nodejs.org/) is installed.
+* Install Node.js modules with `npm`
+```shell
+npm install
+```
+* Build files with grunt `grunt`
+```shell
+grunt
+```
