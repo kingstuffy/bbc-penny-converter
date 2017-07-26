@@ -50,7 +50,8 @@
             var resultsMessage = composeResultsMessage(requiredCoins);
             var state = requiredCoins.length > 1 ? ' are ' : ' is ';
             var successMessage = 'The minimum number of Sterling coins needed to make '
-                + input + state + '<span class="text--results">' + resultsMessage + '</span>';
+                + '<span class="text--results">' +  input + '</span>' + state
+                + '<span class="text--results">' + resultsMessage + '</span>';
             showSuccessMessage(successMessage);
 
         }
