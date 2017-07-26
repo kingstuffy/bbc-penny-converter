@@ -51,6 +51,7 @@
     function convertToPennies(input) {
         var multiplier = 1;
         var acceptedLetters = /^[0-9.]+$/;
+        var decimalCharacter = /[.]/;
 
         if (input.charAt(0) === '£') {
             multiplier = 100;
@@ -65,8 +66,12 @@
             return {success: false, value: 'Missing value'}
         }
 
-        if (!input.match(acceptedLetters)) {
+        if (!acceptedLetters.test(input)) {
             return {success: false, value: 'Invalid value'}
+        }
+
+        if (decimalCharacter.test(input)) {
+            multiplier = 100;
         }
 
         var result = parseFloat(input).toFixed(2) * multiplier;
