@@ -123,4 +123,45 @@ describe("App", function () {
 
     });
 
+
+    describe("#composeResultsMessage", function () {
+
+        it("should return composed message from results", function () {
+            var inputsMap = [
+                {
+                    coins: [
+                        {denomination: '£1', quantity: 1},
+                        {denomination: '20p', quantity: 1},
+                        {denomination: '2p', quantity: 1},
+                        {denomination: '1p', quantity: 1}
+                    ],
+                    message: '1(£1), 1(20p), 1(2p), 1(1p)'
+                },
+                {
+                    coins: [
+                        {denomination: '£2', quantity: 6},
+                        {denomination: '20p', quantity: 1},
+                        {denomination: '10p', quantity: 1},
+                        {denomination: '2p', quantity: 2}
+                    ],
+                    message: '6(£2), 1(20p), 1(10p), 2(2p)'
+                },
+                {
+                    coins: [
+                        {denomination: '£2', quantity: 1},
+                        {denomination: '20p', quantity: 1},
+                        {denomination: '10p', quantity: 1},
+                        {denomination: '2p', quantity: 2}
+                    ],
+                    message: '1(£2), 1(20p), 1(10p), 2(2p)'
+                }
+            ];
+            inputsMap.forEach(function (inputMap) {
+                var result = composeResultsMessage(inputMap.coins);
+                expect(result).to.equal(inputMap.message);
+            });
+        });
+
+    });
+
 });
