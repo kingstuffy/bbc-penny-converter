@@ -24,6 +24,8 @@ Examples of invalid inputs: `13x` (invalid character), `13p.02` (valid character
 
 ## Starting App
 * To run the app, open the file `index.html` in a modern web browser with javascript support
+* Demo: [Penny Converter](https://kingstuffy.github.io/bbc-penny-converter)
 
 ## Starting Tests
 * To run the test for the app, open the file `index.test.html` in a modern web browser with javascript support
+* Demo: [Penny Converter Tests](https://kingstuffy.github.io/bbc-penny-converter/index.test.html)
